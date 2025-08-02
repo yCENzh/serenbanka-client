@@ -1,0 +1,709 @@
+/* ================ 主容器 ================ */
+#dialog-main {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  user-select: none;
+  background-color: #000;
+}
+
+/* ================ 遮罩层 ================ */
+#transition-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#currentchapter {
+  background-image: url('../../assets/static/dialog/chapter.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 500px;
+  height: 70px;
+  position: fixed;
+  z-index: 40;
+  pointer-events: none;
+  font-size: 45px;
+  color: #FEFEFE;
+  font-family: '宋体';
+  padding-left: 280px;
+  padding-top: 10px;
+  font-weight: 700;
+  top: 7%;
+}
+
+
+/* ================ 场景背景 ================ */
+#scene-bg {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  margin: 0;
+  padding: 0;
+  display: block;
+  transform: scale(1.1);
+}
+
+/* ================ 对话框区域 ================ */
+#dialog-box {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20vh;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* 对话框背景 */
+#dialog-box-bg {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 20vh;
+  object-fit: cover;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0px -8px 16px rgba(0, 0, 0, 0.1)) drop-shadow(0px -4px 8px rgba(0, 0, 0, 0.08)) drop-shadow(0px -2px 4px rgba(0, 0, 0, 0.05)) drop-shadow(0px -1px 2px rgba(0, 0, 0, 0.01));
+  mask-image: linear-gradient(to top, black 0%, black 80%, rgba(0, 0, 0, 0.8) 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, black 0%, black 80%, rgba(0, 0, 0, 0.8) 85%, transparent 100%);
+}
+
+/* ================ 对话框内容 ================ */
+#dialog-content {
+  position: relative;
+  z-index: 3;
+  width: 96vw;
+  height: 100%;
+  margin: 2vh auto 0 auto;
+  color: #fff;
+  text-shadow:
+    -1px -1px 1px #000,
+    1px -1px 1px #000,
+    -1px 1px 1px #000,
+    1px 1px 1px #000,
+    2px 2px 2px #000,
+    0px 0px 1px #000;
+}
+
+/* 对话框行布局 */
+#dialog-row {
+  display: flex;
+  height: 100%;
+}
+
+/* ================ 对话框头像 ================ */
+#dialog-avatar {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  overflow: visible;
+}
+
+.dialog-avatar .character-slot {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/* 头像内角色卡定位 */
+#dialog-avatar .character-congyu,
+#dialog-avatar .character-fangnai {
+  position: absolute !important;
+  width: 700px !important;
+  height: 700px !important;
+  bottom: -600px !important;
+  left: -70px !important;
+  transform-origin: center center !important;
+}
+
+/* ================ 对话框文本 ================ */
+#dialog-maintext {
+  flex: 1 1 80%;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 20vw;
+  top: -7vh;
+  width: 65vw;
+  text-shadow:
+    -0.5px -0.5px 0.5px #000,
+    0.5px -0.5px 0.5px #000,
+    -0.5px 0.5px 0.5px #000,
+    0.5px 0.5px 0.5px #000,
+    1px 1px 1px #000,
+    1.5px 1.5px 1.5px #000,
+    0px 0px 0.5px #000;
+}
+
+/* 角色名称 */
+#name {
+  font-size: 3.7vh;
+  color: #EEDEFE;
+  letter-spacing: 0.1em;
+  margin-top: 2vh;
+  margin-bottom: 0.5vh;
+  margin-left: 1vw;
+}
+
+/* 对话文本 */
+#text {
+  font-size: 3.5vh;
+  line-height: 1.15;
+  color: #EEDEFE;
+  border-radius: 1vh;
+  padding: 0vh 3vw;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  position: relative;
+  min-height: 8vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow: visible;
+}
+
+/* 打字机效果样式 */
+.text-line {
+  display: block;
+  position: relative;
+  width: 100%;
+  flex-shrink: 0;
+  margin-bottom: 0.3vh;
+}
+
+.text-char {
+  display: inline-block;
+  opacity: 1;
+  animation: fadeInChar 0.1s ease-in;
+}
+
+.typing-cursor {
+  display: inline-block;
+  color: #ffffff;
+  font-weight: bold;
+  animation: blink 1s infinite;
+  margin-left: 2px;
+}
+
+/* ================ 按钮区域 ================ */
+#button-area {
+  position: absolute;
+  transition: transform 0.3s ease;
+  transform: translateY(0);
+  right: 2vw;
+  bottom: 1vh;
+  z-index: 3;
+}
+
+#button-area.fixed {
+  position: fixed;
+  right: 2vw;
+  bottom: 1vh;
+  transform: translateY(0);
+}
+
+#button-area:not(.fixed):not(.hovered):not(.volume-active) {
+  transform: translateY(100%);
+}
+
+#button-area.hovered,
+#button-area.volume-active {
+  transform: translateY(0);
+}
+
+/* 按钮栏分割线 */
+#button-bar-line {
+  position: relative;
+  width: 100%;
+  pointer-events: none;
+  mask-image: linear-gradient(to right, transparent 10vw, black 10vw);
+  -webkit-mask-image: linear-gradient(to right, transparent 10vw, black 10vw);
+  transform: translate(-4vw, -0.5vh);
+}
+
+/* 按钮栏 */
+#button-bar {
+  display: flex;
+  gap: 1vw;
+  justify-content: flex-end;
+  padding-right: 4vw;
+}
+
+.dialog-btn {
+  height: 2vh;
+  width: auto;
+  cursor: pointer;
+  opacity: 0.92;
+  transition: opacity 0.2s;
+}
+
+.dialog-btn:hover {
+  opacity: 1;
+}
+
+/* ================ 功能提示区域 ================ */
+#function-tip {
+  position: absolute;
+  left: 10vw;
+  bottom: -1.5vh;
+  width: 10vw;
+  height: 5vh;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#function-tip img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+#function-tip .tip-text {
+  position: relative;
+  color: #ffffff;
+  font-size: 1.5vh;
+  text-align: center;
+  text-shadow:
+    -1px -1px 1px #000,
+    1px -1px 1px #000,
+    -1px 1px 1px #000,
+    1px 1px 1px #000,
+    2px 2px 2px #000,
+    0px 0px 1px #000;
+  padding: 0 2vw;
+}
+
+#function-tip.show {
+  opacity: 1;
+}
+
+/* ================ 音量控制区域 ================ */
+#volume-control {
+  position: fixed;
+  right: 11.5vw;
+  bottom: 6vh;
+  z-index: 4;
+  width: 2vw;
+  height: 10vh;
+  pointer-events: auto;
+  overflow: visible;
+}
+
+#volume-slider-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: url('../../assets/static/dialog/1554.png') no-repeat center center;
+  background-size: contain;
+  overflow: visible;
+  padding-top: 2vh;
+}
+
+#volume-slider-track {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: visible;
+}
+
+#volume-slider {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1.5vw;
+  height: 1.5vw;
+  background: url('../../assets/static/dialog/1559.png') no-repeat center center;
+  background-size: 100% 100%;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+#volume-slider:hover {
+  transform: translateX(-50%) scale(1.1);
+}
+
+/* ================ 已读界面 ================ */
+#read-log {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 已读界面标题 */
+.read-title {
+  position: fixed;
+  left: 0px;
+  top: 40px;
+  width: 400px;
+  height: auto;
+  z-index: 101;
+}
+
+/* 日志列表 */
+.log-list {
+  width: 80%;
+  height: 725px;
+  overflow-y: hidden;
+  padding: 0 40px;
+  display: block;
+  margin: 20px auto 0 auto;
+  scroll-padding: 0;
+}
+
+#read-log.show .log-list {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 日志项目 */
+.log-item {
+  color: #fff;
+  margin-bottom: 25px;
+  font-size: 32px;
+  line-height: 1.6;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  display: flex;
+  width: 100%;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  gap: 30px;
+  height: 125px;
+  transition: color 0.2s ease;
+  box-sizing: border-box;
+  scroll-snap-align: start;
+}
+
+.log-item:first-child {
+  margin-top: 0px;
+}
+
+.log-item:hover {
+  color: #ca7cfa;
+}
+
+.log-item:hover .log-name,
+.log-item:hover .log-text {
+  color: #ca7cfa;
+}
+
+.log-item:last-child {
+  margin-bottom: 0;
+  height: 125px;
+}
+
+.log-name {
+  flex: 0 0 300px;
+  text-align: right;
+  color: #ffffff;
+  font-weight: bold;
+  padding-right: 20px;
+  transition: color 0.2s ease;
+}
+
+.log-text {
+  flex: 1;
+  text-align: left;
+  padding-right: 20px;
+  transition: color 0.2s ease;
+}
+
+/* ================ 滚动控制 ================ */
+#scroll-control {
+  position: fixed;
+  right: 4vw;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 4;
+  width: 2vw;
+  height: 550px;
+  pointer-events: auto;
+  overflow: visible;
+}
+
+#scroll-slider-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: url('../../assets/static/dialog/readlog/14440.png') no-repeat center center;
+  background-size: contain;
+  overflow: visible;
+  padding-top: 0;
+}
+
+#scroll-slider-track {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: visible;
+}
+
+#scroll-slider {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2.5vw;
+  height: 2.5vw;
+  background: url('../../assets/static/dialog/readlog/14448.png') no-repeat center center;
+  background-size: 100% 100%;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+#scroll-slider:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* ================ 滚动按钮 ================ */
+.scroll-btn {
+  width: 36px;
+  height: 36px;
+  right: 4vw;
+  cursor: pointer;
+  user-select: none;
+  border: none;
+  background-color: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transition: all 0.3s ease;
+  position: fixed;
+  z-index: 110;
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+/* 向上滚动按钮 */
+.scroll-btn-up {
+  top: 8.5vw;
+  background-image: url('../../assets/static/dialog/readlog/b1.png');
+}
+
+.scroll-btn-up:hover {
+  background-image: url('../../assets/static/dialog/readlog/b2.png');
+}
+
+.scroll-btn-up:active {
+  background-image: url('../../assets/static/dialog/readlog/b3.png');
+}
+
+/* 到顶部按钮 */
+.scroll-btn-top {
+  top: 6vw;
+  background-image: url('../../assets/static/dialog/readlog/a1.png');
+}
+
+.scroll-btn-top:hover {
+  background-image: url('../../assets/static/dialog/readlog/a2.png');
+}
+
+.scroll-btn-top:active {
+  background-image: url('../../assets/static/dialog/readlog/a3.png');
+}
+
+/* 向下滚动按钮 */
+.scroll-btn-down {
+  bottom: 8.5vw;
+  background-image: url('../../assets/static/dialog/readlog/c1.png');
+}
+
+.scroll-btn-down:hover {
+  background-image: url('../../assets/static/dialog/readlog/c2.png');
+}
+
+.scroll-btn-down:active {
+  background-image: url('../../assets/static/dialog/readlog/c3.png');
+}
+
+/* 到底部按钮 */
+.scroll-btn-bottom {
+  bottom: 6vw;
+  background-image: url('../../assets/static/dialog/readlog/d1.png');
+}
+
+.scroll-btn-bottom:hover {
+  background-image: url('../../assets/static/dialog/readlog/d2.png');
+}
+
+.scroll-btn-bottom:active {
+  background-image: url('../../assets/static/dialog/readlog/d3.png');
+}
+
+/* ================ 返回按钮 ================ */
+.back-btn {
+  position: fixed;
+  right: 60px;
+  bottom: 20px;
+  z-index: 101;
+  width: 240px;
+  height: 60px;
+  background: url('../../assets/static/dialog/readlog/back1.png') no-repeat center center;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background-image: url('../../assets/static/dialog/readlog/back2.png');
+}
+
+.back-btn:active {
+  background-image: url('../../assets/static/dialog/readlog/back3.png');
+}
+
+/* ================ 动画效果 ================ */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* 打字机效果动画 */
+@keyframes fadeInChar {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* option内容 */
+#option-log {
+  position: fixed;
+  inset: 0;
+}
+
+#option-log #optionButton1 {
+  position: absolute;
+  background-image: url('../../assets/static/dialog/选项.png');
+  background-color: transparent;
+  background-size: contain;
+  /* 保持图片比例，覆盖整个按钮 */
+  background-position: center;
+  /* 图片居中 */
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  left: 30%;
+  top: 20%;
+  background-color: rgba(0, 0, 0, 0);
+  width: 40%;
+  /* 设置按钮宽度 */
+  height: 10%;
+  color: #FEFEFE;
+  /* 文字颜色 */
+  outline: none;
+  font-weight: bold;
+  /* 文字粗细 */
+  font-size: x-large;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  /* 文字阴影 */
+}
+
+#option-log #optionButton2 {
+  position: absolute;
+  background-image: url('../../assets/static/dialog/选项.png');
+  background-color: transparent;
+  background-size: contain;
+  /* 保持图片比例，覆盖整个按钮 */
+  background-position: center;
+  /* 图片居中 */
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  left: 30%;
+  top: 35%;
+  background-color: rgba(0, 0, 0, 0);
+  width: 40%;
+  /* 设置按钮宽度 */
+  height: 10%;
+  color: #FEFEFE;
+  /* 文字颜色 */
+  outline: none;
+  font-weight: bold;
+  /* 文字粗细 */
+  font-size: x-large;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  /* 文字阴影 */
+}
+
+#option-log #optionButton1:hover {
+  color: #FE877F;
+}
+
+#option-log #optionButton2:hover {
+  color: #FE877F;
+}
+
+.character-fade-enter-active,
+.character-fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.character-fade-enter,
+.character-fade-leave-to {
+  opacity: 0;
+}
+
+.character-fade-enter-to,
+.character-fade-leave {
+  opacity: 1;
+}

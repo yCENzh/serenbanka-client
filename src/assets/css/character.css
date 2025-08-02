@@ -1,0 +1,369 @@
+/* 角色区域布局 */
+.character-area {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.character-slot {
+  position: absolute;
+  width: 33.33%;
+  height: 100%;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.character-slot.left {
+  left: 5%;
+}
+
+.character-slot.center {
+  left: 33.33%;
+}
+
+.character-slot.right {
+  left: 50%;
+}
+
+/* ==================== 角色1：丛雨 ==================== */
+.character-congyu {
+  position: fixed;
+  width: 1200px;
+  height: 1200px;
+  bottom: -85vh;
+  pointer-events: none;
+  transform: scale(1.5);
+  transition: opacity 0.3s ease;
+
+  /* 正面立绘 */
+  .body-a {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: -10%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: opacity 0.3s ease;
+
+    &.pose-0 {
+      background-image: url('../static/character/mur/a/body/0.png');
+    }
+  }
+
+  .face-a {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    &.expression-0 {
+      width: 11.2%;
+      height: 11.2%;
+      left: 36.1%;
+      top: 8.4%;
+      background-image: url('../static/character/mur/a/face/0.png');
+    }
+    &.expression-1 {
+      width: 11%;
+      height: 11%;
+      left: 35.9%;
+      top: 8.6%;
+      background-image: url('../static/character/mur/a/face/1.png');
+    }
+    &.expression-3 {
+      width: 11%;
+      height: 11%;
+      left: 36%;
+      top: 8.2%;
+      background-image: url('../static/character/mur/a/face/3.png');
+    }
+
+    &.expression-4 {
+      width: 11%;
+      height: 11%;
+      left: 35.8%;
+      top: 8%;
+      background-image: url('../static/character/mur/a/face/4.png');
+    }
+
+    &.expression-5 {
+      width: 11%;
+      height: 11%;
+      left: 35.9%;
+      top: 8.2%;
+      background-image: url('../static/character/mur/a/face/5.png');
+    }
+
+
+    &.active {
+      opacity: 1;
+    }
+  }
+
+  /* 侧面立绘 */
+  .body-b {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: -10%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: opacity 0.3s ease;
+
+    &.pose-0 {
+      background-image: url('../static/character/mur/b/body/0.png');
+    }
+    
+    &.pose-1 {
+      background-image: url('../static/character/mur/b/body/1.png');
+    }
+  }
+
+  .face-b {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    &.expression-0 {
+      width: 11.5%;
+      height: 11.5%;
+      left: 32.5%;
+      top: 8%;
+      background-image: url('../static/character/mur/b/face/0.png');
+    }
+    &.expression-1 {
+      width: 12.5%;
+      height: 12.5%;
+      left: 31.3%;
+      top: 5.9%;
+      background-image: url('../static/character/mur/b/face/1.png');
+    }
+    &.expression-2 {
+      width: 11.96%;
+      height: 11.96%;
+      left: 32.2%;
+      top: 6.2%;
+      background-image: url('../static/character/mur/b/face/2.png');
+    }
+    &.expression-3 {
+      width: 11.96%;
+      height: 11.96%;
+      left: 32.2%;
+      top: 6.2%;
+      background-image: url('../static/character/mur/b/face/3.png');
+    }
+    &.expression-4 {
+      width: 11%;
+      height: 11%;
+      left: 32.5%;
+      top: 8.2%;
+      background-image: url('../static/character/mur/b/face/4.png');
+    }
+    &.expression-5 {
+      width: 11%;
+      height: 11%;
+      left: 32.5%;
+      top: 8.2%;
+      background-image: url('../static/character/mur/b/face/5.png');
+    }
+    &.expression-7 {
+      width: 11%;
+      height: 10%;
+      left: 32.6%;
+      top: 8.9%;
+      background-image: url('../static/character/mur/b/face/7.png');
+    }
+    &.expression-8 {
+      width: 11%;
+      height: 10%;
+      left: 32.6%;
+      top: 8.4%;
+      background-image: url('../static/character/mur/b/face/8.png');
+    }
+    &.expression-9 {
+      width: 11%;
+      height: 11%;
+      left: 32.5%;
+      top: 8.4%;
+      background-image: url('../static/character/mur/b/face/9.png');
+    }
+    &.expression-10 {
+      width: 11%;
+      height: 11%;
+      left: 32.7%;
+      top: 8.4%;
+      background-image: url('../static/character/mur/b/face/10.png');
+    }
+    &.expression-11 {
+      width: 11%;
+      height: 11%;
+      left: 32.7%;
+      top: 8.4%;
+      background-image: url('../static/character/mur/b/face/11.png');
+    }
+    &.expression-12 {
+      width: 11%;
+      height: 11%;
+      left: 32.7%;
+      top: 8.4%;
+      background-image: url('../static/character/mur/b/face/12.png');
+    }
+
+    &.active {
+      opacity: 1;
+    }
+  }
+}
+
+/* ==================== 角色2：芳乃 ==================== */
+.character-fangnai {
+  position: fixed;
+  width: 1200px;
+  height: 1200px;
+  bottom: -90vh;
+  pointer-events: none;
+  transform: scale(1.75);
+  transition: opacity 0.3s ease;
+
+  /* 正面立绘 */
+  .body-a {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: -15%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: opacity 0.3s ease;
+
+    &.pose-0 {
+      background-image: url('../static/character/yos/a/body/0.png');
+    }
+  }
+
+  .face-a {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    &.expression-0 {
+      width: 10.5%;
+      height: 10.5%;
+      left: 36.7%;
+      top: 7%;
+      background-image: url('../static/character/yos/a/face/0.png');
+    }
+    &.expression-1 {
+      width: 10.2%;
+      height: 10.2%;
+      left: 37%;
+      top: 6.8%;
+      background-image: url('../static/character/yos/a/face/1.png');
+    }
+    &.expression-2 {
+      width: 10.5%;
+      height: 10.5%;
+      left: 36.65%;
+      top: 6.7%;
+      background-image: url('../static/character/yos/a/face/2.png');
+    }
+
+    &.active {
+      opacity: 1;
+    }
+  }
+
+  /* 侧面立绘 */
+  .body-b {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: -12%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: opacity 0.3s ease;
+
+    &.pose-0 {
+      background-image: url('../static/character/yos/b/body/0.png');
+    }
+    &.pose-1 {
+      background-image: url('../static/character/yos/b/body/1.png');
+    }
+  }
+
+  .face-b {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    &.expression-0 {
+      width: 10%;
+      height: 10%;
+      left: 35.8%;
+      top: 7.4%;
+      background-image: url('../static/character/yos/b/face/0.png');
+    }
+    &.expression-1 {
+      width: 10.3%;
+      height: 10.3%;
+      left: 35.7%;
+      top: 7.5%;
+      background-image: url('../static/character/yos/b/face/1.png');
+    }
+    &.expression-2 {
+      width: 10.3%;
+      height: 10.3%;
+      left: 35.7%;
+      top: 7.1%;
+      background-image: url('../static/character/yos/b/face/2.png');
+    }
+    &.expression-3 {
+      width: 10.3%;
+      height: 10.3%;
+      left: 35.7%;
+      top: 7.1%;
+      background-image: url('../static/character/yos/b/face/3.png');
+    }
+    &.expression-4 {
+      width: 10.3%;
+      height: 10.3%;
+      left: 35.7%;
+      top: 7.2%;
+      background-image: url('../static/character/yos/b/face/4.png');
+    }
+    &.expression-5 {
+      width: 10.3%;
+      height: 10.3%;
+      left: 35.5%;
+      top: 7%;
+      background-image: url('../static/character/yos/b/face/5.png');
+    }
+    &.expression-6 {
+      width: 10%;
+      height: 10%;
+      left: 35.8%;
+      top: 7.3%;
+      background-image: url('../static/character/yos/b/face/6.png');
+    }
+
+    &.active {
+      opacity: 1;
+    }
+  }
+}

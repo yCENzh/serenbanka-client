@@ -1,0 +1,403 @@
+#save-main {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    user-select: none;
+
+    #bg-savedata-image1 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+    }
+
+    #bg-savedata-image2 {
+        position: absolute;
+        top: -4%;
+        left: 0;
+        width: 97.5%;
+        height: 100%;
+        object-fit: contain;
+        z-index: 0;
+    }
+
+    #content-overlay {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+    }
+
+    #savedata-setting1 {
+        position: fixed;
+        top: 3.3%;
+        left: 19%;
+        width: 100%;
+        height: 20%;
+        transform: scale(0.85);
+    }
+
+    .setting-buttons1 {
+        margin-left: 0.4%;
+        cursor: pointer;
+    }
+
+    .setting-buttons2 {
+        margin-left: 1.5%;
+        cursor: pointer;
+    }
+
+    .setting-buttons3 {
+        cursor: pointer;
+    }
+
+    #savedata-count {
+        position: fixed;
+        top: 5%;
+        left: 55.5%;
+    }
+    
+    #PageValueShow {
+        position: fixed;
+        left: 57%;
+        top: 5.1%;
+        font-size: large;
+        color: azure;
+    }
+
+    #savedata-setting2 {
+        position: fixed;
+        top: 1.5%;
+        left: 61%;
+        width: 50%;
+        float: right;
+        transform: scale(0.9);
+        height: 20%;
+    }
+
+    #savedata-setting4 {
+        position: fixed;
+        top: 7%;
+        left: 66%;
+        width: 50%;
+        transform: scale(0.85);
+        float: right;
+        height: 20%;
+    }
+
+    .data-container {
+        position: fixed;
+        top: 18%;
+        left: 37.5%;
+        width: 63%;
+        height: 67vh;
+        transform: scale(1);
+        overflow: hidden;
+    }
+
+    #data-grid {
+        position: absolute;
+        display: grid;
+        grid-template-columns: repeat(4, 20.5%);
+        gap: 0% 3%;
+        width: 100%;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .data-block {
+        position: relative;
+        height: 23vh;
+    }
+    .data-backgroundImage{
+        position: absolute;
+        left: 5.3%;
+        top: 10.7%;
+        width: 89%;
+        height: 50%;
+        z-index: 4;
+        pointer-events: none;
+    }
+    .data-showID{
+        position: absolute;
+        left: 70%;
+        top: 1%;
+        font-size: 14px;
+        pointer-events: none;
+    }
+    .data-commentsave{
+        position: absolute;
+        left: 5.5%;
+        top: 65%;
+        pointer-events: none;
+    }
+    .data-comment{
+        position: absolute;
+        left: 120%;
+        top: 0%;
+        font-size: 13px;
+        color: #993366;
+        pointer-events: none;
+    }
+    .data-time{
+        position: absolute;
+        top: 78%;
+        left: 2%;
+        width: 100%;
+        pointer-events: none;
+    }
+    .data-timestamp{
+        position: absolute;
+        left: 12%;
+        top: 1.5%;
+        font-size: 13px;
+        color: #AA8866;
+        pointer-events: none;
+    }
+    .data-chapter{
+        position: absolute;
+        left: 81%;
+        top: 0%;
+        font-size: 14px;
+        color: #AA8866;
+        pointer-events: none;
+    }
+    .savedata-block {
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+
+    .detail{
+        position: fixed;
+        left: 6.8%;
+        width: 25.9%;
+        top:19.8%;
+        height: 50%;
+    }
+    .detail-background{
+        position: absolute;
+        width: 100.5%;
+        height: 52%;
+    }
+    .detail-date{
+        position: absolute;
+        left: 27%;
+        top: 56%;
+        font-size: 20px;
+        width: 80%;
+        height: 10%;
+        color: #AA8866;
+    }
+    .detail-chapter{
+        position: absolute;
+        left: 34%;
+        top: 68%;
+        font-size: 20px;
+        width: 80%;
+        height: 10%;
+        color: #AA8866;
+    }
+    .detail-comment{
+        position: absolute;
+        left: 4%;
+        top: 86%;
+        font-size: 20px;
+        width: 80%;
+        height: 10%;
+        color: #993366;
+    }
+
+    #savedata-setting3 {
+        position: fixed;
+        top: 90%;
+        left: 39%;
+        width: 90%;
+        height: 18%;
+        transform: scale(0.9);
+    }
+
+    #setting-text {
+        position: fixed;
+        top: 91%;
+        width: 30%;
+        left: 5%;
+        height: 20%;
+        font-size: large;
+        color: rgb(210, 209, 209);
+    }
+    .setting-text-p{
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .custom-slider {
+        position: fixed;
+        appearance: none;
+        left: 33.2%;
+        top: 6%;
+        z-index: 1;
+        width: 12%;
+        height: 0.7vh;
+        border-radius: 3px;
+        background: url('/src/assets/static/savedata/26052.png') center/cover no-repeat;
+        outline: none;
+    }
+
+    /* 滑块轨道 - WebKit */
+    .custom-slider::-webkit-slider-runnable-track {
+        cursor: pointer;
+    }
+
+    /* 滑块按钮 - WebKit */
+    .custom-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 4vh;
+        height: 4vh;
+        border-radius: 50%;
+        background: url('/src/assets/static/savedata/17994.png') center/cover no-repeat;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+
+    /* 悬停和激活状态 */
+    .custom-slider::-webkit-slider-thumb:hover,
+    .custom-slider::-webkit-slider-thumb:active {
+        transform: scale(1.1);
+    }
+
+    #overlay1 {
+        position: fixed;
+        inset: 0;
+        background-color: rgba(76, 29, 76, 0.5);
+        /* 移除 opacity 设置，让过渡类完全控制透明度 */
+        z-index: 2;
+    }
+    #overlay2 {
+        position: fixed;
+        inset: 0;
+        background-color: rgba(76, 29, 76, 0.5);
+        /* 移除 opacity 设置，让过渡类完全控制透明度 */
+        z-index: 2;
+    }
+
+    #ensurelog {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+
+    #ensureText {
+        position: absolute;
+        top: 25%;
+        left: 52%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(to right, #B1433E, #73583F);
+        font-family: "宋体";
+        background-clip: text;
+        font-size: 30px;
+        font-weight: 900;
+        color: transparent;
+    }
+
+    #ensureButton1,
+    #ensureButton2 {
+        position: absolute;
+        top: 50%;
+        width: 27%;
+        height: 7%;
+        background-color: #f4f4f4;
+        font-family: "宋体";
+        font-size: 20px;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        border-radius: 3vh;
+        box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.3);
+        /* 水平偏移0px，垂直偏移3px，模糊半径5px，阴影颜色为半透明黑色 */
+    }
+
+    #ensureButton1 {
+        left: 20.6%;
+    }
+
+    #ensureButton2 {
+        left: 52.6%;
+    }
+
+    #ensureButton1 span,
+    #ensureButton2 span {
+        display: inline-block;
+        pointer-events: none;
+    }
+
+    /* 悬停效果 */
+    #ensureButton1:hover span,
+    #ensureButton2:hover span {
+        color: #C55550;
+        transform: translate(-0.5px);
+        /* 左上偏移 */
+    }
+    
+
+    /* comment遮罩使用 */
+    #CommentOverlog {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    #comment-text-area{
+        white-space: pre-wrap; 
+        text-align: left; 
+        resize: none;
+        border: #f4f4f4;
+        position: absolute;
+        top: 35%;
+        left: 22%;
+        width: 59%;
+        height: 17%;
+        outline: none;
+        font-family: "宋体"; 
+        font-size: 20px; 
+        font-weight: 500; 
+        line-height: 1.6; 
+    }
+
+
+
+
+    /* 进入过渡的初始状态 */
+    .overlay-fade-in-out-enter-active {
+        transition: all 0.2s ease-out;
+    }
+
+    .overlay-fade-in-out-leave-active {
+        transition: all 0.2s ease-in;
+    }
+
+    .overlay-fade-in-out-enter-from,
+    .overlay-fade-in-out-leave-to {
+        opacity: 0;
+    }
+
+    .text-fade-in-out-enter-active {
+        transition: all 0.3s ease-out;
+    }
+
+    .text-fade-in-out-leave-active {
+        transition: all 0.3s ease-in;
+    }
+
+    .text-fade-in-out-enter-from,
+    .text-fade-in-out-leave-to {
+        opacity: 0;
+    }
+
+}
